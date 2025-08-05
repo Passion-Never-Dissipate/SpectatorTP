@@ -70,7 +70,7 @@
 
   短命令的前缀，如果你不知道它是什么，不要更改它
 
-* ### short_prefix  
+* ### short_prefix_enable  
 
   默认值: true
 
