@@ -1,0 +1,22 @@
+{
+	"id": "spectator_tp",
+	"version": "1.0.0",
+	"name": "Spectator TP",
+	"description": {
+		"en_us": "A multi-mode transmission plugin designed specifically for the spectator gamemode",
+		"zh_cn": "一个专为为观察者模式设计的多模式传送插件"
+	},
+	"author": [
+		"FRUITS_CANDY","SeeU_SAMA"
+	],
+	"link": "https://github.com/Passion-Never-Dissipate/Chunk_BackUp",
+	"dependencies": {
+		"mcdreforged": ">=2.7.0",
+		"minecraft_data_api": "*"
+	},
+	"archive_name": "Spectator-TP-v{version}",
+	"resources": [
+		"LICENSE",
+		"lang"
+	]
+}
