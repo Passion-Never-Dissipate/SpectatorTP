@@ -1,0 +1,39 @@
+spectator_tp:
+
+  introduction:
+
+    register_message: "查看与§6观察者模式§a传送§f有关的指令"
+
+    help_message: |
+        ------ {1} {2} ------
+        为观察者模式设计的§a多模式§c传送§f插件(仅在§c非生存模式§f下生效)
+        §3作者: FRUITS_CANDY, SeeU_SAMA
+        §d【全部指令】
+        #sc={0}<>st=点击查看用法#§7{0} §f根据当前坐标在地狱和主世界间快速切换,自身必须是§c非生存模式
+        #sc={0} help<>st=点击查看用法#§7{0} help §f查看帮助信息
+        #sc={0} id Steve<>st=点击查看用法#§7{0} id §e<player> §f传送到某个玩家身边,自身必须是§c非生存模式
+        #sc={0} id Steve Alex<>st=点击查看用法#§7{0} id §e<player1> <player2> §f将玩家1传送到玩家2,玩家1必须是§c非生存模式
+        #sc={0} x y z<>st=点击查看用法#§7{0} §e<x> <y> <z> §f传送到指定坐标,自身必须是§c非生存模式
+        #sc={0} x y z in 0<>st=点击查看用法#§7{0} §e<x> <y> <z> §7in §6<维度:0主世界,-1地狱,1末地> §f传送到某个维度的指定坐标,自身必须是§c非生存模式
+
+  command:
+
+    not_player: "§b§l[ST] §c该插件只能由玩家使用!"
+
+    mode_error: "§b§l[ST] §c玩家§6{}§c未处于观察者或创造模式,无法使用传送!"
+
+    dimension_error: "§b§l[ST] §c你只能在主世界或下界使用此命令!"
+
+    id_tp: "§b§l[ST] §f已将玩家§a{0}§f传送至玩家§6{1}§f!"
+
+    pos_tp: "§b§l[ST] §f已将§a{0}§f传送至§6{1}§f,坐标为: [#sc={2} {3} {4}<>st=点击复制坐标#§e{2} {3} {4}§f]"
+
+    offline: "§b§l[ST] §f玩家§6{}§c未在线§f!无法进行§a传送§f!"
+
+    unidentified_dimension: "§b§l[ST] §c维度输入错误!"
+
+    get_info_timeout: "§b§l[ST] 使用§6minecraft_data_api§f插件获取玩家§c{}§f数据时超时!"
+
+    get_list_timeout: "§b§l[ST] 使用§6minecraft_data_api§f插件获取§c玩家列表§f时超时!"
+
+
