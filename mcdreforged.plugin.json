@@ -9,12 +9,12 @@
 	"author": [
 		"FRUITS_CANDY","SeeU_SAMA"
 	],
-	"link": "https://github.com/Passion-Never-Dissipate/Chunk_BackUp",
+	"link": "https://github.com/Passion-Never-Dissipate/SpectatorTP",
 	"dependencies": {
 		"mcdreforged": ">=2.7.0",
 		"minecraft_data_api": "*"
 	},
-	"archive_name": "Spectator-TP-v{version}",
+	"archive_name": "SpectatorTP-v{version}",
 	"resources": [
 		"LICENSE",
 		"lang"

@@ -12,16 +12,17 @@ CONFIG_NAME = "spectator_tp.json"
 dim_translation = st_config.dim_translation
 dim_convert = st_config.dim_convert
 Prefix = st_config.prefix
+short_command = st_config.short_command
 
 
 def print_help_msg(src: InfoCommandSource):
     src.reply(
-        Message.get_json_str(tr("introduction.help_message", Prefix, "Spectator TP", st_config.plugin_version))
+        Message.get_json_str(tr("introduction.help_message", Prefix, short_command, "Spectator TP", st_config.plugin_version))
     )
 
 
 def on_load(server: PluginServerInterface, old):
-    global dim_translation, dim_convert, Prefix
+    global dim_translation, dim_convert, Prefix, short_command
     config_folder = server.get_data_folder()
     if not os.path.exists(os.path.join(config_folder, CONFIG_NAME)):
         server.save_config_simple(st_config.get_default(), CONFIG_NAME)
@@ -39,10 +40,15 @@ def on_load(server: PluginServerInterface, old):
     Prefix = cfg.prefix
     dim_translation = cfg.dim_translation
     dim_convert = cfg.dim_convert
+    short_command = cfg.short_command
+    short_command_enable = cfg.short_command_enable
+    server.register_help_message(f"{short_command}", tr("introduction.short_msg"))
     server.register_help_message(f"{Prefix} help", tr("introduction.register_message"))
     builder = SimpleCommandBuilder()
 
     builder.command(f"{Prefix}", dimension_teleport)
+    if short_command_enable:
+        builder.command(f"{short_command}", dimension_teleport)
     builder.command(f"{Prefix} help", print_help_msg)
     builder.command(f"{Prefix} id <id1>", dimension_teleport)
     builder.command(f"{Prefix} id <id1> <id2>", dimension_teleport)
@@ -84,7 +90,7 @@ def dimension_teleport(src: InfoCommandSource, dic: dict):
     server = src.get_server()
     player = src.get_info().player
 
-    if "id1" in dic:
+    if "id1" in dic and src.get_info().content != short_command:
         lst = get_player_list()
         if not lst:
             src.reply(tr("command.get_list_timeout"))
@@ -132,7 +138,7 @@ def dimension_teleport(src: InfoCommandSource, dic: dict):
 
         return
 
-    if "z" in dic:
+    if "z" in dic and src.get_info().content != short_command:
         result = is_spector_or_creative(player)
         if result is None:
             src.reply(tr("command.get_info_timeout", player))

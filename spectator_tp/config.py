@@ -12,5 +12,7 @@ class st_config(Serializable):
         "minecraft:the_nether": "下界",
         "minecraft:the_end": "末地"
     }
-    prefix: str = "!tp"
+    prefix: str = "!!st"
+    short_command: str = "!d"
+    short_command_enable: bool = True
     plugin_version: str = "1.0.0"
