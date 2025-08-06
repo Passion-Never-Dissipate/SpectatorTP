@@ -34,6 +34,8 @@ spectator_tp:
 
     unidentified_dimension: "§b§l[ST] §c维度输入错误!"
 
+    out_of_boundary: "§b§l[ST] §c传送目的地超出边界范围!"
+
     get_info_timeout: "§b§l[ST] §f使用§6minecraft_data_api§f插件获取玩家§c{}§f数据时超时!"
 
     get_list_timeout: "§b§l[ST] §f使用§6minecraft_data_api§f插件获取§c玩家列表§f时超时!"

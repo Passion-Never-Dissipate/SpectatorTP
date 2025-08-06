@@ -24,19 +24,9 @@ def transfer(x, operation='*'):
 
     # 根据操作类型计算
     if operation == '*':
-        result = num * 8.0
+        return round(num * 8.0, 15)
     elif operation == '/':
-        result = num / 8.0
-    else:
-        return
-
-    # 处理小数位数（使用格式化和转换保证浮点数输出）
-    # 转换会确保至少一位小数，最多15位小数
-    return float(
-        format(result, '.15g').rstrip('0').rstrip('.') + '0' if '.' not in format(result, '.15g'
-                                                                                  ) else format(result, '.15g').rstrip(
-            '0').rstrip('.') or '0.0'
-    )
+        return round(num / 8.0, 15)
 
 
 def update_config(old_config, template=config.get_default().serialize()):
@@ -58,3 +48,5 @@ def update_config(old_config, template=config.get_default().serialize()):
                     else:
                         old_val.append(template_val[i])
     return old_config
+
+

@@ -13,11 +13,13 @@ dim_translation = st_config.dim_translation
 dim_convert = st_config.dim_convert
 Prefix = st_config.prefix
 short_command = st_config.short_command
+boundary = 29999999.7
 
 
 def print_help_msg(src: InfoCommandSource):
     src.reply(
-        Message.get_json_str(tr("introduction.help_message", Prefix, short_command, "Spectator TP", st_config.plugin_version))
+        Message.get_json_str(
+            tr("introduction.help_message", Prefix, short_command, "Spectator TP", st_config.plugin_version))
     )
 
 
@@ -150,6 +152,10 @@ def dimension_teleport(src: InfoCommandSource, dic: dict):
 
         x, y, z = dic["x"], dic["y"], dic["z"]
 
+        if not ((-boundary <= x <= boundary) and (-boundary <= z <= boundary)):
+            src.reply(tr("command.out_of_boundary"))
+            return
+
         if "dimension" in dic:
             dimension = dic["dimension"]
             dimension = dim_convert.get(str(dimension))
@@ -199,6 +205,11 @@ def dimension_teleport(src: InfoCommandSource, dic: dict):
                 src.reply(tr("command.get_info_timeout", player))
                 return
             x, y, z = transfer(pos[0], "/"), pos[1], transfer(pos[2], "/")
+
+            if not ((-boundary <= x <= boundary) and (-boundary <= z <= boundary)):
+                src.reply(tr("command.out_of_boundary"))
+                return
+
             server.execute(f'execute in minecraft:the_nether run tp {player} {x} {y} {z}')
             src.reply(Message.get_json_str(
                 tr("command.pos_tp", player, dim_translation["minecraft:the_nether"], f"{x:.2f}", f"{y:.2f}",
@@ -211,6 +222,11 @@ def dimension_teleport(src: InfoCommandSource, dic: dict):
                 src.reply(tr("command.get_info_timeout", player))
                 return
             x, y, z = transfer(pos[0]), pos[1], transfer(pos[2])
+
+            if not ((-boundary <= x <= boundary) and (-boundary <= z <= boundary)):
+                src.reply(tr("command.out_of_boundary"))
+                return
+
             server.execute(
                 f'execute in minecraft:overworld run tp {player} {x} {y} {z}')
             src.reply(Message.get_json_str(

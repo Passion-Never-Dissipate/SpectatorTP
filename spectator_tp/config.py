@@ -15,4 +15,4 @@ class st_config(Serializable):
     prefix: str = "!!st"
     short_command: str = "!d"
     short_command_enable: bool = True
-    plugin_version: str = "1.0.0"
+    plugin_version: str = "1.1.0"
